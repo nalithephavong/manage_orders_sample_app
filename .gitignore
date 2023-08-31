@@ -1,0 +1,11 @@
+ui/node_modules
+server/node_modules
+
+.env
+*.cmd
+*.code-workspace
+*/package-lock.json
+
+ui/.next
+
+server/dist
