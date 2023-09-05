@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import { json } from 'body-parser';
 
-import ordersRoutes from './routes/orders';
+import ordersRoutes from './routes/orders-route';
 
 dotenv.config();
 

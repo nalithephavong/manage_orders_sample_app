@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { Order } from '../models/orders';
+import { Order } from '../models/orders-model';
 import records from '../data/orders';
 
 export interface CreateOrderRequest extends Request {
