@@ -3,6 +3,7 @@ Manage Orders is a web application built with Next and Express. The app simulate
 - Installation of a third-party database is not required. Data is stored in a local object on the Express server.
 - Simple interface design: column sorting, intuitive buttons, and paging.
 
+For more information on how to build the Express backend, check out my blog post: [Everywhen Software Blog](https://www.everywhensoftware.com/blog/2023-09-01-Simple-Express/)
 
 # Getting Started
 
