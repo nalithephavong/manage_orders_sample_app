@@ -44,7 +44,7 @@ function Index() {
                   mt: 3, 
                   mb: 2,
                 }}
-                href="/orders"
+                href={AppConfig.landingPageRedirect}
                 endIcon={<ArrowIcon />}
                 size="large"
               >
