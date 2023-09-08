@@ -4,6 +4,7 @@ import { OverridableStringUnion } from '@mui/types';
 export interface ToolbarActions {
     name: string;
     icon: string;
+    fields: {id: string, label: string, type: string}[];
     callback: (value:unknown) => void;
     tooltip: string;
     title: string;

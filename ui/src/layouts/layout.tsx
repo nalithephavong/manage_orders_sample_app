@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Helmet from 'react-helmet';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { grey } from '@mui/material/colors';
+import { ThemeProvider } from '@mui/material/styles';
 import { 
     CssBaseline,
     Box
@@ -18,6 +17,8 @@ interface LayoutProps {
     notifications: string[];
 }
 
+const drawerWidth: number = 240;
+
 export default function Layout(props:LayoutProps) {
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
@@ -30,8 +31,16 @@ export default function Layout(props:LayoutProps) {
             <ThemeProvider theme={defaultTheme}>
                 <Box sx={{ display: 'flex' }}>
                     <CssBaseline />
-                    <NavigationBar {...props} open={open} toggleDrawer={toggleDrawer} />
-                    <SideBar open={open} toggleDrawer={toggleDrawer} />
+                    <NavigationBar {...props} 
+                        open={open} 
+                        toggleDrawer={toggleDrawer} 
+                        drawerWidth={drawerWidth}
+                    />
+                    <SideBar 
+                        open={open} 
+                        toggleDrawer={toggleDrawer} 
+                        drawerWidth={drawerWidth} 
+                    />
                     <Box
                         component="main"
                         sx={{

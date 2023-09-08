@@ -67,6 +67,10 @@ const ordersToolbarActions: ToolbarActions[] = [
     title: "Create New Order",
     description: "",
     icon: "AddIcon",
+    fields: [
+      { id: "customer", label: "Customer", type: "text" },
+      { id: "total", label: "Total", type: "text" }
+    ],
     callback: (param) => { 
       fetch(`${AppConfig.apiUrl}/orders`, { 
         method:"POST",
@@ -93,6 +97,7 @@ const ordersSelectedToolbarActions: ToolbarActions[] = [
     title: "Update Order",
     description: "Update the following orders(s):",
     icon: "UpdateIcon",
+    fields: [],
     callback: (param) => {
       const { data, selected } = param as UpdateType;
       (selected as string[]).forEach((id) => { 
@@ -119,6 +124,7 @@ const ordersSelectedToolbarActions: ToolbarActions[] = [
     title: "Delete Order",
     description: "Delete the following order(s):",
     icon: "DeleteIcon",
+    fields: [],
     callback: (param) => { 
       (param as string[]).forEach((id) => {
         fetch(`${AppConfig.apiUrl}/orders/${id}`, { method:"DELETE" })

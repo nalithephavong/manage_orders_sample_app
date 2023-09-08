@@ -25,6 +25,8 @@ function Index() {
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
+            height: '100vh',
+            //justifyContent: 'center'
           }}
         >
             <Avatar sx={{ m: 1, bgcolor: 'primary.main' }}>
@@ -46,7 +48,7 @@ function Index() {
                 endIcon={<ArrowIcon />}
                 size="large"
               >
-                Get the Scoop
+                {AppConfig.landingPageButtonLabel}
               </Button>
               <Copyright sx={{ mt: 5 }} />
             </Box>

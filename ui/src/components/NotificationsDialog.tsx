@@ -40,7 +40,7 @@ export default function NotificationsDialog(props:DeleteDialogProps) {
                 <DialogContentText id="delete-dialog-description">
                     {notifications.length > 0 ? (
                         notifications.join("\n")
-                        ): ("Yay! No notifications to display.")
+                        ): ("Nothin' to see here.")
                     }
                 </DialogContentText>
                 </DialogContent>

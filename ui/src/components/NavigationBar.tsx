@@ -9,7 +9,6 @@ import {
 } from '@mui/material';
 import { 
     Menu as MenuIcon,
-    Notifications,
     Notifications as NotificationsIcon 
 } from '@mui/icons-material';
 import NotificationsDialog from './NotificationsDialog';
@@ -19,15 +18,17 @@ interface NavigationBarProps {
   toggleDrawer: () => void;
   title: string;
   notifications: string[];
+  drawerWidth: number;
 }
 
 interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
 }
 
-const drawerWidth: number = 240;
+export default function NavigationBar (props:NavigationBarProps) {
+  const [showNotifications, setShowNotifications] = useState(false);
 
-const AppBar = styled(MuiAppBar, {
+  const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
   })<AppBarProps>(({ theme, open }) => ({
     zIndex: theme.zIndex.drawer + 1,
@@ -36,17 +37,14 @@ const AppBar = styled(MuiAppBar, {
       duration: theme.transitions.duration.leavingScreen,
     }),
     ...(open && {
-      marginLeft: drawerWidth,
-      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: props.drawerWidth,
+      width: `calc(100% - ${props.drawerWidth}px)`,
       transition: theme.transitions.create(['width', 'margin'], {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
       }),
     }),
   }));
-
-export default function NavigationBar (props:NavigationBarProps) {
-  const [showNotifications, setShowNotifications] = useState(false);
 
   return (
       <AppBar position="absolute" open={props.open}>

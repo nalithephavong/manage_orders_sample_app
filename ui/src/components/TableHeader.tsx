@@ -40,7 +40,7 @@ export default function TableHeader(props: TableHeaderProps) {
               checked={rowCount > 0 && numSelected === rowCount}
               onChange={onSelectAllClick}
               inputProps={{
-                'aria-label': 'select all desserts',
+                'aria-label': 'select all',
               }}
             />
           </TableCell>

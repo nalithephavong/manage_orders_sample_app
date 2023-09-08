@@ -11,66 +11,60 @@ import {
     People as PeopleIcon,
     BarChart as BarChartIcon,
     Layers as LayersIcon,
-    Assignment as AssignmentIcon 
+    Assignment as AssignmentIcon,
+    Logout as LogoutIcon
 } from '@mui/icons-material';
 
-export const mainMenuItems = (
-  <React.Fragment>
-    <ListItemButton>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Orders" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Customers" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
-    </ListItemButton>
-  </React.Fragment>
-);
+interface MenuItemType {
+  title: string;
+  url: string;
+  icon: JSX.Element;
+}
 
-export const secondaryMenuItems = (
-  <React.Fragment>
-    <ListSubheader component="div" inset>
-      Saved reports
-    </ListSubheader>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Current month" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItemButton>
-    <ListItemButton>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItemButton>
-  </React.Fragment>
-);
+const mainMenuList: MenuItemType[] = [
+  { title: "Dashboard", url: "", icon: <DashboardIcon /> },
+  { title: "Orders", url: "", icon: <ShoppingCartIcon /> },
+  { title: "Customers", url: "", icon: <PeopleIcon /> },
+  { title: "Reports", url: "", icon: <BarChartIcon /> },
+  { title: "Integrations", url: "", icon: <LayersIcon /> },
+  { title: "Sign Out", url: "/", icon: <LogoutIcon /> }
+];
+
+const secondaryMenuList: MenuItemType[] = [
+  { title: "Current month", url: "", icon: <AssignmentIcon /> },
+  { title: "Last quarter", url: "", icon: <AssignmentIcon /> },
+  { title: "Year-end sale", url: "", icon: <AssignmentIcon /> },
+];
+
+const secondaryMenuListHeader = "Saved reports";
+
+function getListItems(menuItems:MenuItemType[]) {
+  const items = menuItems.map((item:MenuItemType, index) => {
+    return (
+      <ListItemButton href={item.url} key={index}>
+        <ListItemIcon>
+          {item.icon}
+        </ListItemIcon>
+        <ListItemText primary={item.title} />
+      </ListItemButton>
+    );
+  });
+
+  return (
+    <>{items}</>
+  );
+}
+
+function getSecondaryListItems() {
+  return (
+    <>
+      <ListSubheader component="div" inset>
+        {secondaryMenuListHeader}
+      </ListSubheader>
+      {getListItems(secondaryMenuList)}
+    </>
+  );
+}
+
+export const mainMenuItems = getListItems(mainMenuList);
+export const secondaryMenuItems = getSecondaryListItems();

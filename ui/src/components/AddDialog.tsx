@@ -16,31 +16,32 @@ interface AddDialogProps {
     callbackFn: (value:unknown) => void;
     title: string;
     description: string;
+    fields: {id: string, label: string, type: string}[];
+}
+
+type DataType = {
+    [key:string]: string;
 }
 
 export default function AddDialog(props:AddDialogProps) {
-    const { showDialog, setShowDialog, callbackFn, title, description } = props;
-    const [customer, setCustomer] = useState('');
-    const [total, setTotal] = useState('');
+    const { showDialog, setShowDialog, callbackFn, title, description, fields } = props;
+    const [data, setData] = useState<DataType>({});
 
     const handleClose = () => {
         setShowDialog(false);
     };
 
     const handleAdd = () => {
-        callbackFn( {
-            customer: customer,
-            total: total
-        });
+        callbackFn(data);
         setShowDialog(false);
     };
 
-    const handleCustomerChange = (event:React.ChangeEvent<HTMLInputElement>) => {
-        setCustomer(event.target.value);
-    };
-
-    const handleTotalChange = (event:React.ChangeEvent<HTMLInputElement>) => {
-        setTotal(event.target.value);
+    const handleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+        let id = event.target.id;
+        let newValue = event.target.value;
+        let newData = data;
+        newData[id] = newValue;
+        setData(newData);
     };
 
     return (
@@ -51,26 +52,23 @@ export default function AddDialog(props:AddDialogProps) {
                     <DialogContentText>
                         {description}
                     </DialogContentText>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="customer"
-                        label="Customer"
-                        type="text"
-                        fullWidth
-                        variant="standard"
-                        onChange={handleCustomerChange}
-                    />
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="total"
-                        label="Total"
-                        type="text"
-                        fullWidth
-                        variant="standard"
-                        onChange={handleTotalChange}
-                    />
+                    {
+                        fields.map((field) => {
+                            return (
+                                <TextField
+                                    key={field.id}
+                                    autoFocus
+                                    margin="dense"
+                                    id={field.id}
+                                    label={field.label}
+                                    type={field.type}
+                                    fullWidth
+                                    variant="standard"
+                                    onChange={handleChange}
+                                />
+                            );
+                        })
+                    }
                 </DialogContent>
                 <DialogActions>
                     <Button onClick={handleAdd} autoFocus>Add</Button>

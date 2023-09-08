@@ -86,6 +86,7 @@ export default function TableToolbar(props: TableToolbarProps) {
                     description={action.description}
                     showDialog={showAdd}
                     setShowDialog={setShowAdd}
+                    fields={action.fields}
                     callbackFn={(data) => {
                       action.callback(data);
                       callback();
