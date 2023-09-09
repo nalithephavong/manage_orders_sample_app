@@ -7,6 +7,9 @@ For more information on how to build the Express backend, check out my blog post
 
 Live demo can be found here: [Manage Orders Demo](https://manage-orders-ui.onrender.com).
 
+> [!IMPORTANT]
+> If the orders page does not load right away, please keep refreshing. The Express server may have gone idle. 
+
 # Getting Started
 
 ## Prerequisites
