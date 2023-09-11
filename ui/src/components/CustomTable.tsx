@@ -48,7 +48,7 @@ const getTableCells = (row:RowType, statusOpts: StatusType[]) => {
   const items = [];
   for (const key in row) {
     key == "status"? (
-      items.push(<TableCell align="right" key={key}>{getRowStatus(row[key], statusOpts)}</TableCell>)
+      items.push(<TableCell align="right" key={key}>{getRowStatus(row[key] || "", statusOpts)}</TableCell>)
     ):(
       items.push(<TableCell align="right" key={key}>{row[key]}</TableCell>)
     )
@@ -72,6 +72,7 @@ const getRowStatus = (status:string, statusOpts: StatusType[]) => {
 //#endregion
 
 interface CustomTableProps {
+  tableTitle: string;
   rows: RowType[];
   headerCells: HeaderCellType[];
   defaultOrderBy: string;
@@ -83,6 +84,7 @@ interface CustomTableProps {
 
 export default function CustomTable(props:CustomTableProps) {
   const { 
+    tableTitle,
     rows, 
     headerCells, 
     defaultOrderBy, 
@@ -108,7 +110,7 @@ export default function CustomTable(props:CustomTableProps) {
 
   const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.checked) {
-      const newSelected = rows.map((n) => n.id);
+      const newSelected = rows.map((n) => n.id) && [];
       setSelected(newSelected);
       return;
     }
@@ -166,7 +168,7 @@ export default function CustomTable(props:CustomTableProps) {
       <Paper sx={{ width: '100%', mb: 2 }}>
         <TableToolbar 
           numSelected={selected.length} 
-          title={`All Records`} 
+          title={tableTitle} 
           toolbarActions={toolbarActions} 
           selectedToolbarActions={selectedToolbarActions}
           selected={selected}

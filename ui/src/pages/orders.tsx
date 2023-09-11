@@ -212,13 +212,14 @@ export default function Orders() {
         <Toolbar />
           <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
             <CustomTable 
+              tableTitle="All Orders"
               rows={data}
               headerCells={ordersTableHeader}
               toolbarActions={ordersToolbarActions}
               selectedToolbarActions={ordersSelectedToolbarActions}
               defaultOrderBy="id"
               statusOpts={ordersStatusTypes}
-              componentCallback={() => {console.log("Refresh"); setRefresh(true);}}
+              componentCallback={() => {setRefresh(true);}}
             />
           </Container>
     </Layout>

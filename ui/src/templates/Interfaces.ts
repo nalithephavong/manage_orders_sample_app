@@ -19,6 +19,7 @@ export interface HeaderCellType {
 }
 
 export interface RowType {
+    id: string;
     [key: string]: string;
 }
 
