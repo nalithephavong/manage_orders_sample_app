@@ -5,10 +5,10 @@ Manage Orders is a web application built with Next and Express. The app simulate
 
 For more information on how to build the Express backend, check out my blog post: [Everywhen Software Blog](https://www.everywhensoftware.com/blog/2023-09-01-Simple-Express/)
 
-Live demo can be found here: [Manage Orders Demo](https://manage-orders-ui.onrender.com).
-
 > [!IMPORTANT]
 > If the `orders` page does not load right away, then the Express server may have gone idle. Click on this link and wait until you get a return message (something like `{"message":"Simple Express Server"}`): [Express Server](https://manage-orders-server.onrender.com/). Then try the demo again.
+
+Live demo can be found here: [Manage Orders Demo](https://manage-orders-ui.onrender.com).
 
 # Getting Started
 
